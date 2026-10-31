@@ -1,0 +1,2 @@
+{% extends "base.html" %}{% block title %}{{chapter.title}} · {{novel.title}}{% endblock %}{% block content %}
+<div class="detail-wrap"><a class="back-link" href="{{url_for('detalle',item_id=novel.id)}}">← Volver a {{novel.title}}</a><article class="detail-card"><span class="pill">CAPÍTULO {{chapter.chapter_number}}</span><h1>{{chapter.title}}</h1><p class="date">{{novel.title}}</p><div class="full-text">{{chapter.body}}</div></article></div>{% endblock %}
