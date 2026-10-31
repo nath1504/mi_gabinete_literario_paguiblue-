@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: mi-gabinete-literario-paguiblue
+    runtime: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    healthCheckPath: /
+    disk:
+      name: gabinete-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ADMIN_USERNAME
+        value: paguiblue
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: DATABASE_PATH
+        value: /var/data/gabinete.db
+      - key: UPLOADS_DIR
+        value: /var/data/uploads
